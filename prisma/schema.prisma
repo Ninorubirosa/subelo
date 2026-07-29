@@ -1,0 +1,82 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  name      String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Artist {
+  id          String   @id @default(cuid())
+  name        String
+  avatarUrl   String?
+  genre       String?
+  monthlyListeners Int @default(0)
+  totalStreams Int @default(0)
+  createdAt   DateTime @default(now())
+  releases    Release[]
+}
+
+model Release {
+  id          String   @id @default(cuid())
+  title       String
+  artistId    String
+  artist      Artist   @relation(fields: [artistId], references: [id])
+  coverUrl    String?
+  type        String   @default("single")
+  status      String   @default("live")
+  releaseDate DateTime @default(now())
+  upc         String?
+  createdAt   DateTime @default(now())
+  earnings    Earning[]
+  platformStatuses PlatformStatus[]
+}
+
+model Platform {
+  id        String   @id @default(cuid())
+  name      String
+  icon      String?
+  color     String?
+  statuses  PlatformStatus[]
+}
+
+model PlatformStatus {
+  id         String  @id @default(cuid())
+  releaseId  String
+  release    Release @relation(fields: [releaseId], references: [id])
+  platformId String
+  platform   Platform @relation(fields: [platformId], references: [id])
+  status     String  @default("pending")
+  streams    Int     @default(0)
+}
+
+model Earning {
+  id          String   @id @default(cuid())
+  releaseId   String
+  release     Release  @relation(fields: [releaseId], references: [id])
+  platformId  String?
+  amount      Float
+  currency    String   @default("USD")
+  period      String
+  streams     Int      @default(0)
+  createdAt   DateTime @default(now())
+}
+
+model Post {
+  id        String   @id @default(cuid())
+  title     String
+  content   String?
+  published Boolean  @default(false)
+  authorId  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
