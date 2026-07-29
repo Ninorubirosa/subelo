@@ -1,7 +1,7 @@
 ---
 Task ID: 1
 Agent: Main Agent
-Task: Build RESONATE - Music Distribution Platform (better than TuneCore/DistroKid)
+Task: Build SUBELO - Music Distribution Platform (better than TuneCore/DistroKid)
 
 Work Log:
 - Initialized fullstack dev environment with Next.js 16, Tailwind CSS 4, shadcn/ui
@@ -10,12 +10,12 @@ Work Log:
 - Created seed script with 5 artists, 10 releases, 8 platforms, and realistic earnings data
 - Built API route at /api/dashboard for aggregated analytics data
 - Updated globals.css with dark music theme (electric lime #CCFF00 accent, near-black background)
-- Updated layout.tsx with RESONATE branding and metadata
+- Updated layout.tsx with SUBELO branding and metadata
 - Created 11 landing page components:
   - Navbar (sticky, responsive, mobile hamburger menu with AnimatePresence)
   - Hero (animated waveform bars, gradient text, floating stats, dual CTAs)
   - PlatformLogos (150+ store names scroll)
-  - Comparison (10-row feature comparison table: Resonate vs DistroKid vs TuneCore)
+  - Comparison (10-row feature comparison table: Subelo vs DistroKid vs TuneCore)
   - HowItWorks (3-step flow with connector lines)
   - Features (6-card grid with icons)
   - DashboardPreview (Recharts area chart, platform progress bars, top releases table, stat cards)
@@ -35,7 +35,7 @@ Work Log:
 - ESLint passes clean
 
 Stage Summary:
-- Complete music distribution platform landing page for "RESONATE"
+- Complete music distribution platform landing page for "SUBELO"
 - Dark premium design with electric lime (#CCFF00) accent
 - All sections verified working in both desktop (1920x1080) and mobile (375x812)
 - Database seeded with realistic mock data (artists, releases, earnings)

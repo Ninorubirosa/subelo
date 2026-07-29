@@ -19,7 +19,7 @@ export function CTASection() {
             <span className="gradient-text">Your Music?</span>
           </h2>
           <p className="mt-6 text-lg text-muted-foreground max-w-xl mx-auto">
-            Join 500,000+ independent artists who trust Resonate to get their
+            Join 500,000+ independent artists who trust Subelo to get their
             music heard — and paid for — on their own terms.
           </p>
           <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">

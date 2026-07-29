@@ -8,7 +8,7 @@ const testimonials = [
     name: 'Aria Moon',
     role: 'Indie Pop Artist',
     quote:
-      'I switched from DistroKid after realizing how much I was paying for add-ons that Resonate includes for free. Content ID, publishing admin, split payments — all included. My royalties literally doubled overnight because I stopped paying for "extras."',
+      'I switched from DistroKid after realizing how much I was paying for add-ons that Subelo includes for free. Content ID, publishing admin, split payments — all included. My royalties literally doubled overnight because I stopped paying for "extras."',
     avatar: 'AM',
     streams: '98.7M',
   },
@@ -16,7 +16,7 @@ const testimonials = [
     name: 'Marcus Cole',
     role: 'Hip-Hop Producer & Artist',
     quote:
-      'The real-time analytics changed how I release music. I can see which cities are streaming my tracks the most within hours of dropping. Last month I booked a tour entirely based on Resonate data. No other platform gives you that kind of insight.',
+      'The real-time analytics changed how I release music. I can see which cities are streaming my tracks the most within hours of dropping. Last month I booked a tour entirely based on Subelo data. No other platform gives you that kind of insight.',
     avatar: 'MC',
     streams: '34.5M',
   },
@@ -24,7 +24,7 @@ const testimonials = [
     name: 'Luna Waves',
     role: 'Electronic / Dream Pop',
     quote:
-      'TuneCore took 3 weeks to get my music on Spotify. Resonate had it live in 36 hours. The difference in speed meant I caught a playlist curator window that would have been closed otherwise. That playlist alone generated 200K streams in the first week.',
+      'TuneCore took 3 weeks to get my music on Spotify. Subelo had it live in 36 hours. The difference in speed meant I caught a playlist curator window that would have been closed otherwise. That playlist alone generated 200K streams in the first week.',
     avatar: 'LW',
     streams: '12.8M',
   },

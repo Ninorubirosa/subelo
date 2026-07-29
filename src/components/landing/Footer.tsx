@@ -21,7 +21,7 @@ export function Footer() {
                 <Zap className="w-5 h-5 text-black" />
               </div>
               <span className="text-xl font-bold tracking-tight">
-                RE<span className="text-lime">SONATE</span>
+                SUB<span className="text-lime">ELO</span>
               </span>
             </div>
             <p className="text-sm text-muted-foreground leading-relaxed">
@@ -51,7 +51,7 @@ export function Footer() {
 
         <div className="mt-12 pt-8 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs text-muted-foreground">
-            &copy; 2025 Resonate. All rights reserved.
+            &copy; 2025 Subelo Music. All rights reserved.
           </p>
           <div className="flex items-center gap-4">
             {['X', 'IG', 'YT', 'TT'].map((social) => (

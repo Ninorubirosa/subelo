@@ -30,7 +30,7 @@ export function Navbar() {
               <Zap className="w-5 h-5 text-black" />
             </div>
             <span className="text-xl font-bold tracking-tight">
-              RE<span className="text-lime">SONATE</span>
+              SUB<span className="text-lime">ELO</span>
             </span>
           </a>
 

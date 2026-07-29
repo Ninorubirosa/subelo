@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "RESONATE — Music Distribution, Reinvented",
+  title: "Subelo Music — Music Distribution, Reinvented",
   description:
     "Distribute your music to 150+ platforms worldwide. Keep 100% of your royalties. Faster payouts. Better analytics. No hidden fees. The distribution platform built for artists, not corporations.",
   keywords: [
@@ -27,12 +27,12 @@ export const metadata: Metadata = {
     "music marketing",
   ],
   icons: {
-    icon: "https://z-cdn.chatglm.cn/z-ai/static/logo.svg",
+    icon: "/logo.svg",
   },
   openGraph: {
-    title: "RESONATE — Music Distribution, Reinvented",
+    title: "Subelo Music — Music Distribution, Reinvented",
     description: "Distribute your music everywhere. Keep 100% of royalties.",
-    siteName: "RESONATE",
+    siteName: "Subelo Music",
     type: "website",
   },
 };

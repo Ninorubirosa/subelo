@@ -123,7 +123,7 @@ export function Comparison() {
                 <th className="text-left py-4 px-3 text-sm text-muted-foreground font-medium">Feature</th>
                 <th className="py-4 px-3 text-center">
                   <div className="inline-flex items-center gap-2 bg-lime/10 text-lime px-4 py-2 rounded-full text-sm font-bold">
-                    RESONATE
+                    SUBELO
                   </div>
                 </th>
                 <th className="py-4 px-3 text-center text-sm text-muted-foreground font-medium">
