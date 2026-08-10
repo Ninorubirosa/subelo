@@ -1,37 +1,15 @@
 'use client'
 
+import dynamic from 'next/dynamic'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { motion } from 'framer-motion'
 import { Play, ArrowRight, Upload } from 'lucide-react'
 
-function WaveformVisual() {
-  const bars = 48
-  return (
-    <div className="flex items-end justify-center gap-[2px] h-24 sm:h-32 opacity-60">
-      {Array.from({ length: bars }).map((_, i) => {
-        const delay = i * 0.08
-        const maxH = 30 + Math.sin(i * 0.5) * 40 + Math.random() * 20
-        return (
-          <motion.div
-            key={i}
-            className="w-[3px] rounded-full bg-lime"
-            initial={{ height: '20%' }}
-            animate={{
-              height: ['20%', `${maxH}%`, '20%'],
-            }}
-            transition={{
-              duration: 1.2 + Math.random() * 0.8,
-              repeat: Infinity,
-              delay,
-              ease: 'easeInOut',
-            }}
-          />
-        )
-      })}
-    </div>
-  )
-}
+const WaveformScene = dynamic(() => import('./WaveformScene').then((m) => m.WaveformScene), {
+  ssr: false,
+  loading: () => <div className="w-full h-full bg-gradient-to-b from-lime/10 via-background to-background" />,
+})
 
 function FloatingStat({ value, label, delay }: { value: string; label: string; delay: number }) {
   return (
@@ -50,27 +28,13 @@ function FloatingStat({ value, label, delay }: { value: string; label: string; d
 export function Hero() {
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center pt-16 overflow-hidden">
-      {/* Background effects */}
-      <div className="absolute inset-0 grid-bg" />
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-lime/5 rounded-full blur-[120px]" />
-      <div className="absolute bottom-1/4 left-1/4 w-[400px] h-[400px] bg-lime/4 rounded-full blur-[140px]" />
-
-      {/* Ambient brand footage — the clip's native steel-blue tone already sits inside the logo's blue hue range, so it only needs a saturation lift, not a forced duotone */}
-      <div
-        className="hidden lg:block absolute right-0 top-1/2 -translate-y-1/2 w-[42%] max-w-xl aspect-[3/4] rounded-l-[3rem] overflow-hidden"
-        style={{ maskImage: 'linear-gradient(to left, black 45%, transparent 100%)', WebkitMaskImage: 'linear-gradient(to left, black 45%, transparent 100%)' }}
-      >
-        <video
-          className="w-full h-full object-cover opacity-60"
-          style={{ filter: 'saturate(2.2) contrast(1.1) brightness(0.95)' }}
-          src="/hero-loop.mp4"
-          autoPlay
-          muted
-          loop
-          playsInline
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background" />
+      {/* Full-bleed generative waveform scene */}
+      <div className="absolute inset-0">
+        <WaveformScene />
       </div>
+      {/* Scrim for text legibility over the 3D scene */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_75%_55%_at_50%_45%,var(--background)_0%,color-mix(in_oklch,var(--background)_55%,transparent)_45%,transparent_70%)]" />
+      <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-transparent to-background" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center">
         {/* Badge */}
@@ -130,16 +94,6 @@ export function Hero() {
             See How It Works
             <ArrowRight className="w-4 h-4 ml-2" />
           </Button>
-        </motion.div>
-
-        {/* Waveform */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 0.5 }}
-          className="mt-12 w-full max-w-3xl"
-        >
-          <WaveformVisual />
         </motion.div>
 
         {/* Floating Stats */}
