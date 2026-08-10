@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     "music marketing",
   ],
   icons: {
-    icon: "/logo.svg",
+    icon: "/favicon.png",
   },
   openGraph: {
     title: "Subelo Music — Music Distribution, Reinvented",
