@@ -16,7 +16,7 @@ export function CTASection() {
           <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight">
             Ready to Take Back
             <br />
-            <span className="gradient-text">Your Music?</span>
+            <span className="text-lime">Your Music?</span>
           </h2>
           <p className="mt-6 text-lg text-muted-foreground max-w-xl mx-auto">
             Join 500,000+ independent artists who trust Subelo to get their

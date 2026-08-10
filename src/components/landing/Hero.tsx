@@ -53,7 +53,24 @@ export function Hero() {
       {/* Background effects */}
       <div className="absolute inset-0 grid-bg" />
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-lime/5 rounded-full blur-[120px]" />
-      <div className="absolute bottom-1/4 left-1/4 w-[400px] h-[400px] bg-[#00F2EA]/5 rounded-full blur-[100px]" />
+      <div className="absolute bottom-1/4 left-1/4 w-[400px] h-[400px] bg-lime/4 rounded-full blur-[140px]" />
+
+      {/* Ambient brand footage, duotoned to the lime/black system */}
+      <div
+        className="hidden lg:block absolute right-0 top-1/2 -translate-y-1/2 w-[42%] max-w-xl aspect-[3/4] rounded-l-[3rem] overflow-hidden"
+        style={{ maskImage: 'linear-gradient(to left, black 45%, transparent 100%)', WebkitMaskImage: 'linear-gradient(to left, black 45%, transparent 100%)' }}
+      >
+        <video
+          className="w-full h-full object-cover opacity-40"
+          style={{ filter: 'grayscale(1) brightness(0.85) sepia(1) hue-rotate(72deg) saturate(5)' }}
+          src="/hero-loop.mp4"
+          autoPlay
+          muted
+          loop
+          playsInline
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background" />
+      </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center">
         {/* Badge */}
@@ -77,7 +94,7 @@ export function Hero() {
         >
           Your Music.
           <br />
-          <span className="gradient-text">Your Rules.</span>
+          <span className="text-lime">Your Rules.</span>
         </motion.h1>
 
         {/* Subheadline */}
