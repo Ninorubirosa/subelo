@@ -1,5 +1,6 @@
 'use client'
 
+import { Intro } from '@/components/landing/Intro'
 import { Navbar } from '@/components/landing/Navbar'
 import { Hero } from '@/components/landing/Hero'
 import { PlatformLogos } from '@/components/landing/PlatformLogos'
@@ -15,21 +16,23 @@ import { Footer } from '@/components/landing/Footer'
 
 export default function Home() {
   return (
-    <div className="min-h-screen flex flex-col">
-      <Navbar />
-      <main className="flex-1 noise-overlay relative">
-        <Hero />
-        <PlatformLogos />
-        <Comparison />
-        <HowItWorks />
-        <Features />
-        <DashboardPreview />
-        <Pricing />
-        <Testimonials />
-        <FAQ />
-        <CTASection />
-      </main>
-      <Footer />
-    </div>
+    <Intro>
+      <div className="min-h-screen flex flex-col">
+        <Navbar />
+        <main className="flex-1 noise-overlay relative">
+          <Hero />
+          <PlatformLogos />
+          <Comparison />
+          <HowItWorks />
+          <Features />
+          <DashboardPreview />
+          <Pricing />
+          <Testimonials />
+          <FAQ />
+          <CTASection />
+        </main>
+        <Footer />
+      </div>
+    </Intro>
   )
 }

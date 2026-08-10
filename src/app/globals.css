@@ -92,6 +92,11 @@
   }
 }
 
+/* Set by an inline pre-hydration script (see layout.tsx) so repeat visitors never see the intro flash */
+html[data-intro-seen="1"] .intro-overlay {
+  display: none !important;
+}
+
 @keyframes float {
   0%, 100% { transform: translateY(0px); }
   50% { transform: translateY(-10px); }
