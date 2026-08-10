@@ -183,14 +183,14 @@ export function DashboardPreview() {
                     <AreaChart data={earnings}>
                       <defs>
                         <linearGradient id="earnGrad" x1="0" y1="0" x2="0" y2="1">
-                          <stop offset="5%" stopColor="#CCFF00" stopOpacity={0.3} />
-                          <stop offset="95%" stopColor="#CCFF00" stopOpacity={0} />
+                          <stop offset="5%" stopColor="#38B6FF" stopOpacity={0.3} />
+                          <stop offset="95%" stopColor="#38B6FF" stopOpacity={0} />
                         </linearGradient>
                       </defs>
                       <XAxis dataKey="period" axisLine={false} tickLine={false} tick={{ fill: '#71717a', fontSize: 12 }} />
                       <YAxis axisLine={false} tickLine={false} tick={{ fill: '#71717a', fontSize: 12 }} tickFormatter={(v) => `$${(v / 1000).toFixed(0)}k`} />
                       <Tooltip content={<CustomTooltip />} />
-                      <Area type="monotone" dataKey="amount" stroke="#CCFF00" strokeWidth={2} fill="url(#earnGrad)" name="amount" />
+                      <Area type="monotone" dataKey="amount" stroke="#38B6FF" strokeWidth={2} fill="url(#earnGrad)" name="amount" />
                     </AreaChart>
                   </ResponsiveContainer>
                 </div>

@@ -55,14 +55,14 @@ export function Hero() {
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-lime/5 rounded-full blur-[120px]" />
       <div className="absolute bottom-1/4 left-1/4 w-[400px] h-[400px] bg-lime/4 rounded-full blur-[140px]" />
 
-      {/* Ambient brand footage, duotoned to the lime/black system */}
+      {/* Ambient brand footage — the clip's native steel-blue tone already sits inside the logo's blue hue range, so it only needs a saturation lift, not a forced duotone */}
       <div
         className="hidden lg:block absolute right-0 top-1/2 -translate-y-1/2 w-[42%] max-w-xl aspect-[3/4] rounded-l-[3rem] overflow-hidden"
         style={{ maskImage: 'linear-gradient(to left, black 45%, transparent 100%)', WebkitMaskImage: 'linear-gradient(to left, black 45%, transparent 100%)' }}
       >
         <video
-          className="w-full h-full object-cover opacity-40"
-          style={{ filter: 'grayscale(1) brightness(0.85) sepia(1) hue-rotate(72deg) saturate(5)' }}
+          className="w-full h-full object-cover opacity-60"
+          style={{ filter: 'saturate(2.2) contrast(1.1) brightness(0.95)' }}
           src="/hero-loop.mp4"
           autoPlay
           muted

@@ -37,8 +37,9 @@
   --color-popover: var(--popover);
   --color-card-foreground: var(--card-foreground);
   --color-card: var(--card);
-  --color-lime: #CCFF00;
-  --color-lime-dark: #99cc00;
+  /* token key stays "lime" (class names bg-lime/text-lime/etc. are used across every component) but the value is the brand blue from the logo */
+  --color-lime: #38B6FF;
+  --color-lime-dark: #004AAD;
   --color-surface: #111113;
   --color-surface-light: #1a1a1e;
   --radius-sm: calc(var(--radius) - 4px);
@@ -55,31 +56,31 @@
   --card-foreground: #fafafa;
   --popover: #111113;
   --popover-foreground: #fafafa;
-  --primary: #CCFF00;
+  --primary: #38B6FF;
   --primary-foreground: #09090b;
   --secondary: #1a1a1e;
   --secondary-foreground: #fafafa;
   --muted: #27272a;
   --muted-foreground: #a1a1aa;
-  --accent: #CCFF00;
+  --accent: #38B6FF;
   --accent-foreground: #09090b;
   --destructive: #ef4444;
   --border: #27272a;
   --input: #27272a;
-  --ring: #CCFF00;
-  --chart-1: #CCFF00;
+  --ring: #38B6FF;
+  --chart-1: #38B6FF;
   --chart-2: #00F2EA;
   --chart-3: #FC3C44;
   --chart-4: #A238FF;
   --chart-5: #1DB954;
   --sidebar: #111113;
   --sidebar-foreground: #fafafa;
-  --sidebar-primary: #CCFF00;
+  --sidebar-primary: #38B6FF;
   --sidebar-primary-foreground: #09090b;
   --sidebar-accent: #1a1a1e;
   --sidebar-accent-foreground: #fafafa;
   --sidebar-border: #27272a;
-  --sidebar-ring: #CCFF00;
+  --sidebar-ring: #38B6FF;
 }
 
 @layer base {
@@ -133,27 +134,27 @@
 .glass-card {
   background: rgba(17, 17, 19, 0.7);
   backdrop-filter: blur(20px);
-  border: 1px solid rgba(204, 255, 0, 0.1);
+  border: 1px solid rgba(56, 182, 255,0.1);
 }
 
 .glow-border {
-  box-shadow: 0 0 20px rgba(204, 255, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  box-shadow: 0 0 20px rgba(56, 182, 255,0.15), inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 
 .glow-button {
-  box-shadow: 0 0 30px rgba(204, 255, 0, 0.3);
+  box-shadow: 0 0 30px rgba(56, 182, 255,0.3);
   transition: box-shadow 0.3s ease, transform 0.2s ease;
 }
 
 .glow-button:hover {
-  box-shadow: 0 0 50px rgba(204, 255, 0, 0.5);
+  box-shadow: 0 0 50px rgba(56, 182, 255,0.5);
   transform: translateY(-1px);
 }
 
 .grid-bg {
   background-image:
-    linear-gradient(rgba(204, 255, 0, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(204, 255, 0, 0.03) 1px, transparent 1px);
+    linear-gradient(rgba(56, 182, 255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(56, 182, 255,0.03) 1px, transparent 1px);
   background-size: 60px 60px;
 }
 
