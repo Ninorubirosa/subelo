@@ -1,9 +1,10 @@
 'use client'
 
 import { useState } from 'react'
+import Image from 'next/image'
 import { Button } from '@/components/ui/button'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X, Zap } from 'lucide-react'
+import { Menu, X } from 'lucide-react'
 
 const navLinks = [
   { label: 'Features', href: '#features' },
@@ -26,9 +27,7 @@ export function Navbar() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <a href="#" className="flex items-center gap-2 group">
-            <div className="w-8 h-8 rounded-lg bg-lime flex items-center justify-center">
-              <Zap className="w-5 h-5 text-black" />
-            </div>
+            <Image src="/logo-mark.png" alt="" width={243} height={125} className="h-7 w-auto" priority />
             <span className="text-xl font-bold tracking-tight">
               SUB<span className="text-lime">ELO</span>
             </span>
