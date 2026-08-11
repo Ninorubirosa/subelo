@@ -98,10 +98,10 @@ export function Hero() {
 
         {/* Floating Stats */}
         <div className="mt-12 grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 w-full max-w-3xl">
-          <FloatingStat value="$2.4B+" label="Paid to Artists" delay={0.6} />
-          <FloatingStat value="500K+" label="Artists Trust Us" delay={0.7} />
+          <FloatingStat value="100+" label="Founding Artists" delay={0.6} />
+          <FloatingStat value="100%" label="Royalties Kept" delay={0.7} />
           <FloatingStat value="150+" label="Store Partners" delay={0.8} />
-          <FloatingStat value="3 Days" label="Avg. Payout Speed" delay={0.9} />
+          <FloatingStat value="48 Hrs" label="Avg. Time to Go Live" delay={0.9} />
         </div>
       </div>
     </section>

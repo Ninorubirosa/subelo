@@ -51,7 +51,7 @@ export function Footer() {
 
         <div className="mt-12 pt-8 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs text-muted-foreground">
-            &copy; 2025 Subelo Music. All rights reserved.
+            &copy; {new Date().getFullYear()} Subelo Music. All rights reserved.
           </p>
           <div className="flex items-center gap-4">
             {['X', 'IG', 'YT', 'TT'].map((social) => (

@@ -19,8 +19,8 @@ export function CTASection() {
             <span className="text-lime">Your Music?</span>
           </h2>
           <p className="mt-6 text-lg text-muted-foreground max-w-xl mx-auto">
-            Join 500,000+ independent artists who trust Subelo to get their
-            music heard — and paid for — on their own terms.
+            Join our first 100 artists getting their music heard — and paid
+            for — on their own terms.
           </p>
           <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
             <Button

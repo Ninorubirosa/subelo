@@ -10,7 +10,6 @@ import { VideoShowcase } from '@/components/landing/VideoShowcase'
 import { Features } from '@/components/landing/Features'
 import { DashboardPreview } from '@/components/landing/DashboardPreview'
 import { Pricing } from '@/components/landing/Pricing'
-import { Testimonials } from '@/components/landing/Testimonials'
 import { FAQ } from '@/components/landing/FAQ'
 import { CTASection } from '@/components/landing/CTASection'
 import { Footer } from '@/components/landing/Footer'
@@ -29,7 +28,6 @@ export default function Home() {
           <Features />
           <DashboardPreview />
           <Pricing />
-          <Testimonials />
           <FAQ />
           <CTASection />
         </main>
