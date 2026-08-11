@@ -26,8 +26,8 @@ const faqs = [
     a: 'We accept WAV (16-bit or 24-bit, 44.1kHz or 48kHz), FLAC, and AIFF. We recommend 16-bit/44.1kHz WAV for the best balance of quality and compatibility across all platforms. Cover art must be at least 3000x3000px in JPG or PNG format, in RGB color space.',
   },
   {
-    q: 'Do you offer publishing administration?',
-    a: 'Yes! Publishing administration is included in the Pro and Label plans. We register your compositions with collection societies worldwide (ASCAP, BMI, PRS, GEMA, JASRAC, and 80+ more) and collect mechanical and performance royalties that streaming alone does not capture. This typically increases your total income by 15-30%.',
+    q: 'Do you offer AI mastering?',
+    a: 'Yes — every upload can run through our built-in AI mastering engine before it ships to DSPs, giving you a consistent, radio-ready loudness and tone pass with no extra software or engineer needed. Prefer to master it yourself? Just upload the file already mastered and we\'ll leave it untouched.',
   },
 ]
 

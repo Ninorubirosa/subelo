@@ -9,21 +9,21 @@ const steps = [
     icon: Upload,
     title: 'Upload Your Music',
     description:
-      'Drag and drop your tracks, add your artwork, enter your metadata. Our AI auto-tags your genre, mood, and tempo for maximum discoverability. Supports WAV, FLAC, and high-res audio up to 48kHz/24bit.',
+      'Drag and drop your tracks, add your artwork, enter your metadata. Run it through our built-in AI mastering before you ship, or upload a file that\'s already mastered. Supports WAV, FLAC, and high-res audio up to 48kHz/24bit.',
   },
   {
     number: '02',
     icon: Globe,
     title: 'Pick Your Platforms',
     description:
-      'Select from 150+ stores and streaming services. Spotify, Apple Music, TikTok, Amazon, YouTube Music, Deezer, Tidal, and dozens more. One click sends your music everywhere. Pre-save links included for every release.',
+      'Select from 220+ stores and streaming services. Spotify, Apple Music, TikTok, Amazon, YouTube Music, Deezer, Tidal, and dozens more. One click sends your music everywhere. Pre-save links included for every release.',
   },
   {
     number: '03',
     icon: Wallet,
     title: 'Get Paid Fast',
     description:
-      'Watch your streams and earnings in real-time on your dashboard. Royalties hit your bank account in as little as 3 business days. Split payments with collaborators automatically. No minimum payout threshold.',
+      'Watch your streams and earnings in real-time on your dashboard. Payouts are fast and automated — no waiting on manual processing. Split payments with collaborators automatically. No minimum payout threshold.',
   },
 ]
 

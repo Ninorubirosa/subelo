@@ -15,7 +15,7 @@ const features = [
     icon: Zap,
     title: 'Lightning-Fast Distribution',
     description:
-      'Your music goes live on Spotify, Apple Music, and 150+ stores in under 48 hours. Most competitors take 2-4 weeks. We optimized every step of the delivery pipeline to get your music out there faster than anyone else in the industry.',
+      'Your music goes live on Spotify, Apple Music, and 220+ stores within 24-48 hours. We pre-validate your metadata and audio quality before submission, which eliminates the most common cause of delivery delays.',
   },
   {
     icon: BarChart3,
@@ -37,15 +37,15 @@ const features = [
   },
   {
     icon: Globe2,
-    title: '150+ Global Platforms',
+    title: '220+ Global Platforms',
     description:
-      'Spotify, Apple Music, Amazon Music, YouTube Music, Tidal, Deezer, TikTok, Pandora, iHeartRadio, Boomplay, and over 140 more. We are constantly adding new platforms to ensure your music reaches every corner of the global market.',
+      'Spotify, Apple Music, Amazon Music, YouTube Music, Tidal, Deezer, TikTok, Pandora, iHeartRadio, Boomplay, and over 200 more. We are constantly adding new platforms to ensure your music reaches every corner of the global market.',
   },
   {
     icon: Sparkles,
-    title: 'AI-Powered Metadata',
+    title: 'AI-Powered Mastering',
     description:
-      'Upload your audio and our AI automatically detects genre, mood, tempo, and language. Get optimized metadata that improves your chances of playlist placement and algorithmic discovery. You can always override with manual tags.',
+      'Every upload can run through our built-in AI mastering engine before it ships to DSPs — a consistent, radio-ready loudness and tone pass with no extra software or engineer needed. You can always upload your own pre-mastered file instead.',
   },
 ]
 

@@ -45,7 +45,7 @@ export function Hero() {
         >
           <Badge variant="outline" className="border-lime/30 text-lime mb-6 px-4 py-1.5 text-sm">
             <Play className="w-3 h-3 mr-1.5" />
-            Now distributing to 150+ platforms worldwide
+            Now distributing to 220+ platforms worldwide
           </Badge>
         </motion.div>
 
@@ -100,7 +100,7 @@ export function Hero() {
         <div className="mt-12 grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 w-full max-w-3xl">
           <FloatingStat value="100+" label="Founding Artists" delay={0.6} />
           <FloatingStat value="100%" label="Royalties Kept" delay={0.7} />
-          <FloatingStat value="150+" label="Store Partners" delay={0.8} />
+          <FloatingStat value="220+" label="Store Partners" delay={0.8} />
           <FloatingStat value="48 Hrs" label="Avg. Time to Go Live" delay={0.9} />
         </div>
       </div>

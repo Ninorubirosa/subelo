@@ -27,7 +27,7 @@ export function PlatformLogos() {
           viewport={{ once: true }}
           className="text-center text-sm text-muted-foreground mb-8"
         >
-          Distribute to 150+ stores and streaming platforms
+          Distribute to 220+ stores and streaming platforms
         </motion.p>
         <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-4">
           {platforms.map((name, i) => (

@@ -17,7 +17,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Subelo Music — Music Distribution, Reinvented",
   description:
-    "Distribute your music to 150+ platforms worldwide. Keep 100% of your royalties. Faster payouts. Better analytics. No hidden fees. The distribution platform built for artists, not corporations.",
+    "Distribute your music to 220+ platforms worldwide. Keep 100% of your royalties. Fast, automated payouts. Real-time analytics. No hidden fees. The distribution platform built for artists, not corporations.",
   keywords: [
     "music distribution",
     "independent artist",

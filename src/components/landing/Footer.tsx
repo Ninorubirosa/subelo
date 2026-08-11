@@ -3,7 +3,7 @@
 import { Zap } from 'lucide-react'
 
 const footerLinks = {
-  Product: ['Features', 'Pricing', 'Distribution', 'Analytics', 'Publishing'],
+  Product: ['Features', 'Pricing', 'Distribution', 'Analytics', 'AI Mastering'],
   Resources: ['Blog', 'Help Center', 'Artist Guide', 'API Docs', 'Status'],
   Company: ['About', 'Careers', 'Press Kit', 'Contact'],
   Legal: ['Terms of Service', 'Privacy Policy', 'Cookie Policy'],

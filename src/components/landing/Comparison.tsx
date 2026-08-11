@@ -20,7 +20,7 @@ const comparisons = [
   },
   {
     feature: 'Payout Speed',
-    reson: '3 Business Days',
+    reson: 'Fast & Automated',
     distrokid: '1-2 Weeks',
     tunecore: '2-4 Weeks',
     resonHighlight: true,
@@ -40,18 +40,11 @@ const comparisons = [
     resonHighlight: true,
   },
   {
-    feature: 'Publishing Admin',
+    feature: 'AI Mastering',
     reson: 'Included',
-    distrokid: '+$4.99/mo',
-    tunecore: '+$25 one-time',
-    resonHighlight: false,
-  },
-  {
-    feature: 'YouTube Content ID',
-    reson: 'Included',
-    distrokid: '+$4.99/mo',
-    tunecore: '+$10 one-time',
-    resonHighlight: false,
+    distrokid: false,
+    tunecore: false,
+    resonHighlight: true,
   },
   {
     feature: 'Split Payments',
