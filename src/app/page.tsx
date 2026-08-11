@@ -6,6 +6,7 @@ import { Hero } from '@/components/landing/Hero'
 import { PlatformLogos } from '@/components/landing/PlatformLogos'
 import { Comparison } from '@/components/landing/Comparison'
 import { HowItWorks } from '@/components/landing/HowItWorks'
+import { VideoShowcase } from '@/components/landing/VideoShowcase'
 import { Features } from '@/components/landing/Features'
 import { DashboardPreview } from '@/components/landing/DashboardPreview'
 import { Pricing } from '@/components/landing/Pricing'
@@ -24,6 +25,7 @@ export default function Home() {
           <PlatformLogos />
           <Comparison />
           <HowItWorks />
+          <VideoShowcase />
           <Features />
           <DashboardPreview />
           <Pricing />
