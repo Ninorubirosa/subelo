@@ -42,7 +42,7 @@ export function PlatformLogos() {
               {name}
             </motion.div>
           ))}
-          <span className="text-lime font-semibold text-sm">+138 more</span>
+          <span className="text-lime font-semibold text-sm">+208 more</span>
         </div>
       </div>
     </section>

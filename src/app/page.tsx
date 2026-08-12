@@ -9,7 +9,6 @@ import { HowItWorks } from '@/components/landing/HowItWorks'
 import { VideoShowcase } from '@/components/landing/VideoShowcase'
 import { Features } from '@/components/landing/Features'
 import { DashboardPreview } from '@/components/landing/DashboardPreview'
-import { Pricing } from '@/components/landing/Pricing'
 import { FAQ } from '@/components/landing/FAQ'
 import { CTASection } from '@/components/landing/CTASection'
 import { Footer } from '@/components/landing/Footer'
@@ -27,7 +26,6 @@ export default function Home() {
           <VideoShowcase />
           <Features />
           <DashboardPreview />
-          <Pricing />
           <FAQ />
           <CTASection />
         </main>

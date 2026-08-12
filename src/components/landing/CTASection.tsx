@@ -28,20 +28,17 @@ export function CTASection() {
               className="bg-lime text-black hover:bg-lime-dark font-bold text-base px-8 py-6 glow-button w-full sm:w-auto"
             >
               <Upload className="w-5 h-5 mr-2" />
-              Upload Your First Track — Free
+              Upload Your First Track
             </Button>
             <Button
               size="lg"
               variant="outline"
               className="border-border hover:border-lime/50 hover:text-lime text-base px-8 py-6 w-full sm:w-auto"
             >
-              Compare Plans
+              See How It Works
               <ArrowRight className="w-4 h-4 ml-2" />
             </Button>
           </div>
-          <p className="mt-4 text-xs text-muted-foreground">
-            No credit card required. Free 14-day trial on all plans.
-          </p>
         </motion.div>
       </div>
     </section>

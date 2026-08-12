@@ -6,38 +6,17 @@ import { Check, X, Minus } from 'lucide-react'
 const comparisons = [
   {
     feature: 'Royalty Split',
-    reson: '100% Yours',
-    distrokid: '100% (with catches)',
+    reson: '100%',
+    distrokid: '100%',
     tunecore: '100%',
-    resonHighlight: true,
-  },
-  {
-    feature: 'Starting Price',
-    reson: '$4.99/mo',
-    distrokid: '$22.99/yr',
-    tunecore: '$9.99/single',
-    resonHighlight: true,
-  },
-  {
-    feature: 'Payout Speed',
-    reson: 'Fast & Automated',
-    distrokid: '1-2 Weeks',
-    tunecore: '2-4 Weeks',
-    resonHighlight: true,
-  },
-  {
-    feature: 'Release Limit',
-    reson: 'Unlimited',
-    distrokid: 'Unlimited (extra $)',
-    tunecore: 'Per-release fee',
-    resonHighlight: true,
+    resonHighlight: false,
   },
   {
     feature: 'Real-Time Analytics',
     reson: true,
     distrokid: false,
-    tunecore: 'Basic',
-    resonHighlight: true,
+    tunecore: true,
+    resonHighlight: false,
   },
   {
     feature: 'AI Mastering',
@@ -48,10 +27,10 @@ const comparisons = [
   },
   {
     feature: 'Split Payments',
-    reson: true,
+    reson: 'Included',
     distrokid: true,
-    tunecore: false,
-    resonHighlight: false,
+    tunecore: '+$7.99/yr',
+    resonHighlight: true,
   },
   {
     feature: 'Custom Release Date',

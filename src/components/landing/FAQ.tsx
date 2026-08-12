@@ -11,7 +11,7 @@ const faqs = [
   },
   {
     q: 'Do you really take 0% commission?',
-    a: 'Yes, really. We monetize through subscriptions, not through your royalties. You keep every cent you earn from streaming. There are no hidden fees, no percentage takes, and no "processing charges." The price you see on the pricing page is the only thing you pay us. Your royalties are 100% yours, always.',
+    a: 'Yes, really. We monetize through subscriptions, not through your royalties. You keep every cent you earn from streaming. There are no hidden fees, no percentage takes, and no "processing charges." Your royalties are 100% yours, always.',
   },
   {
     q: 'What happens if I want to leave?',
