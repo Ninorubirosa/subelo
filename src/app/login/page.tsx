@@ -37,7 +37,9 @@ export default function LoginPage() {
     <main className="min-h-screen flex items-center justify-center bg-background text-foreground px-4">
       <form onSubmit={handleSubmit} className="w-full max-w-sm">
         <h1 className="text-2xl font-bold mb-6 text-center">Sign in to Subelo</h1>
+        <label htmlFor="email" className="sr-only">Email address</label>
         <input
+          id="email"
           type="email"
           required
           autoComplete="email"

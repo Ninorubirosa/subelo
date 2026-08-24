@@ -5,6 +5,10 @@ export async function sendMagicLinkEmail({
   to: string
   url: string
 }): Promise<void> {
+  if (!process.env.AUTH_RESEND_KEY) {
+    throw new Error('AUTH_RESEND_KEY is not set')
+  }
+
   const res = await fetch('https://api.resend.com/emails', {
     method: 'POST',
     headers: {

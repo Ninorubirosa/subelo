@@ -29,10 +29,15 @@ async function seed() {
   ]
 
   for (const a of artists) {
+    const user = await db.user.upsert({
+      where: { email: `${a.id}@demo.subelodistro.com` },
+      update: {},
+      create: { email: `${a.id}@demo.subelodistro.com` },
+    })
     await db.artist.upsert({
       where: { id: a.id },
       update: {},
-      create: a,
+      create: { ...a, userId: user.id },
     })
   }
 

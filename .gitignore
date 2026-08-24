@@ -32,6 +32,7 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
+!.env.example
 
 # vercel
 .vercel
@@ -56,3 +57,6 @@ server.log
 # prisma test db
 prisma/test.db
 prisma/test.db-journal
+
+# stray prisma-cli db dir from a misconfigured DATABASE_URL
+prisma/db/

@@ -13,27 +13,15 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
   },
   providers: [
     Resend({
-      apiKey: process.env.AUTH_RESEND_KEY,
-      from: 'Subelo <no-reply@subelodistro.com>',
       sendVerificationRequest: async ({ identifier, url }) => {
         await sendMagicLinkEmail({ to: identifier, url })
       },
     }),
   ],
-  events: {
-    createUser: async ({ user }) => {
-      if (user.id) {
-        await createArtistForUser(db, user.id)
-      }
-    },
-  },
   callbacks: {
     async jwt({ token, user }) {
       if (user?.id) {
-        const artist = await db.artist.findUnique({ where: { userId: user.id } })
-        if (artist) {
-          token.artistId = artist.id
-        }
+        token.artistId = (await createArtistForUser(db, user.id)).id
       }
       return token
     },

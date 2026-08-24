@@ -739,5 +739,6 @@ git commit -m "feat: add login page and auth error page"
 ## After this plan
 
 - **Manual, one-time setup outside this codebase** (not scriptable): sign up for Resend, verify `subelodistro.com`'s SPF/DKIM records, generate an API key, and set `AUTH_RESEND_KEY` in Vercel's environment variables (and locally in `.env`). Magic links won't actually deliver until this is done, even though every task above is code-complete without it.
+- **Also required in Vercel's environment variables for production:** `AUTH_SECRET` (generated locally via `npx auth secret` into `.env.local` in Task 5, Step 2 — that file is gitignored and never deployed). Without `AUTH_SECRET` set in Vercel, every request to `/login` will 500 with a `MissingSecretError`.
 - Fast-follows explicitly deferred by the spec: Google OAuth, signin rate limiting.
 - Next spec in the sequence: catalog/upload sync (subsystem #2) — depends on this plan's `session.user.artistId` being available.
