@@ -5,6 +5,7 @@ import type { Participant, Release, Track } from '@prisma/client'
 import { DetailsStep } from './details-step'
 import { TracksStep } from './tracks-step'
 import { ParticipantsStep } from './participants-step'
+import { ReviewStep } from './review-step'
 
 const STEP_LABELS = ['Details', 'Tracks', 'Participants', 'Review']
 
@@ -69,7 +70,11 @@ export function UploadWizard({
         )}
 
         {step === 3 && (
-          <div className="text-muted-foreground">Review step — added in a later task.</div>
+          <ReviewStep
+            release={currentRelease}
+            tracks={currentTracks}
+            participants={currentParticipants}
+          />
         )}
       </div>
     </main>
