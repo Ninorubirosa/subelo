@@ -57,8 +57,8 @@ export async function upsertTrack(
   await requireOwnedRelease(releaseId, artistId)
 
   if (track.id) {
-    return db.track.update({
-      where: { id: track.id },
+    const { count } = await db.track.updateMany({
+      where: { id: track.id, releaseId },
       data: {
         title: track.title,
         trackNumber: track.trackNumber,
@@ -67,6 +67,10 @@ export async function upsertTrack(
         explicit: track.explicit,
       },
     })
+    if (count === 0) {
+      throw new Error('Track not found')
+    }
+    return db.track.findUniqueOrThrow({ where: { id: track.id } })
   }
 
   return db.track.create({
@@ -85,7 +89,12 @@ export async function deleteTrack(releaseId: string, trackId: string) {
   const artistId = await requireArtistId()
   await requireOwnedRelease(releaseId, artistId)
 
-  await db.track.delete({ where: { id: trackId } })
+  const { count } = await db.track.deleteMany({
+    where: { id: trackId, releaseId },
+  })
+  if (count === 0) {
+    throw new Error('Track not found')
+  }
 }
 
 export async function upsertParticipant(
@@ -116,8 +125,8 @@ export async function upsertParticipant(
   }
 
   if (participant.id) {
-    return db.participant.update({
-      where: { id: participant.id },
+    const { count } = await db.participant.updateMany({
+      where: { id: participant.id, releaseId },
       data: {
         name: participant.name,
         email: participant.email,
@@ -125,6 +134,10 @@ export async function upsertParticipant(
         splitPercent: participant.splitPercent,
       },
     })
+    if (count === 0) {
+      throw new Error('Participant not found')
+    }
+    return db.participant.findUniqueOrThrow({ where: { id: participant.id } })
   }
 
   return db.participant.create({
@@ -145,7 +158,12 @@ export async function deleteParticipant(
   const artistId = await requireArtistId()
   await requireOwnedRelease(releaseId, artistId)
 
-  await db.participant.delete({ where: { id: participantId } })
+  const { count } = await db.participant.deleteMany({
+    where: { id: participantId, releaseId },
+  })
+  if (count === 0) {
+    throw new Error('Participant not found')
+  }
 }
 
 export async function submitRelease(releaseId: string) {
