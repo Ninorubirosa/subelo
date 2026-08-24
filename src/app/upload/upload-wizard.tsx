@@ -4,6 +4,7 @@ import { useState } from 'react'
 import type { Participant, Release, Track } from '@prisma/client'
 import { DetailsStep } from './details-step'
 import { TracksStep } from './tracks-step'
+import { ParticipantsStep } from './participants-step'
 
 const STEP_LABELS = ['Details', 'Tracks', 'Participants', 'Review']
 
@@ -57,9 +58,14 @@ export function UploadWizard({
         )}
 
         {step === 2 && (
-          <div className="text-muted-foreground">
-            Participants step ({currentParticipants.length} so far) — added in the next task.
-          </div>
+          <ParticipantsStep
+            releaseId={currentRelease.id}
+            participants={currentParticipants}
+            onSaved={(updated) => {
+              setCurrentParticipants(updated)
+              setStep(3)
+            }}
+          />
         )}
 
         {step === 3 && (
