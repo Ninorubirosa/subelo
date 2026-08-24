@@ -22,9 +22,13 @@ export function TracksStep({
 
   async function handleAddTrack() {
     if (!newTitle.trim()) return
+    const nextTrackNumber =
+      currentTracks.length === 0
+        ? 1
+        : Math.max(...currentTracks.map((t) => t.trackNumber)) + 1
     const created = await upsertTrack(releaseId, {
       title: newTitle.trim(),
-      trackNumber: currentTracks.length + 1,
+      trackNumber: nextTrackNumber,
       explicit: false,
     })
     setCurrentTracks([...currentTracks, created])
