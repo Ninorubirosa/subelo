@@ -529,7 +529,6 @@ export async function updateReleaseDetails(
     isVersion: boolean
     versionType?: string
     coverUrl?: string
-    label?: string
     copyrightHolder?: string
     phonographicHolder?: string
     previouslyDistributed: boolean
@@ -837,7 +836,6 @@ export function DetailsStep({
   onSaved: (release: Release) => void
 }) {
   const [title, setTitle] = useState(release.title)
-  const [label, setLabel] = useState(release.label ?? '')
   const [coverArtUrl, setCoverArtUrl] = useState(release.coverUrl ?? '')
   const [uploading, setUploading] = useState(false)
   const [saving, setSaving] = useState(false)
@@ -867,7 +865,6 @@ export function DetailsStep({
       const updated = await updateReleaseDetails(release.id, {
         title,
         isVersion: false,
-        label,
         coverUrl: coverArtUrl || undefined,
         previouslyDistributed: false,
       })
@@ -891,16 +888,6 @@ export function DetailsStep({
         required
         value={title}
         onChange={(e) => setTitle(e.target.value)}
-        className="w-full rounded-md border border-border bg-surface px-4 py-2 mb-4 text-sm"
-      />
-
-      <label htmlFor="label" className="block text-sm font-medium mb-1">
-        Label
-      </label>
-      <input
-        id="label"
-        value={label}
-        onChange={(e) => setLabel(e.target.value)}
         className="w-full rounded-md border border-border bg-surface px-4 py-2 mb-4 text-sm"
       />
 
@@ -1379,7 +1366,6 @@ export function ReviewStep({
 
       <div className="glass-card rounded-xl p-4 mb-4">
         <h2 className="font-semibold mb-1">{release.title || 'Untitled release'}</h2>
-        <p className="text-sm text-muted-foreground">{release.label}</p>
       </div>
 
       <div className="glass-card rounded-xl p-4 mb-4">
