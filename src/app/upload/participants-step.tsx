@@ -32,7 +32,7 @@ export function ParticipantsStep({
         role,
         splitPercent,
       })
-      setCurrent([...current, created])
+      setCurrent((prev) => [...prev, created])
       setName('')
       setSplitPercent(0)
     } catch {
@@ -41,8 +41,13 @@ export function ParticipantsStep({
   }
 
   async function handleRemove(participant: Participant) {
-    await deleteParticipant(releaseId, participant.id)
-    setCurrent(current.filter((p) => p.id !== participant.id))
+    setError(null)
+    try {
+      await deleteParticipant(releaseId, participant.id)
+      setCurrent((prev) => prev.filter((p) => p.id !== participant.id))
+    } catch {
+      setError('Could not remove collaborator. Please try again.')
+    }
   }
 
   return (
@@ -73,29 +78,47 @@ export function ParticipantsStep({
       </ul>
 
       <div className="grid grid-cols-3 gap-2 mb-4">
-        <input
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          placeholder="Name"
-          className="rounded-md border border-border bg-surface px-4 py-2 text-sm"
-        />
-        <select
-          value={role}
-          onChange={(e) => setRole(e.target.value)}
-          className="rounded-md border border-border bg-surface px-4 py-2 text-sm"
-        >
-          <option value="artist">Artist</option>
-          <option value="producer">Producer</option>
-          <option value="featured">Featured</option>
-        </select>
-        <input
-          type="number"
-          min={0}
-          max={100}
-          value={splitPercent}
-          onChange={(e) => setSplitPercent(Number(e.target.value))}
-          className="rounded-md border border-border bg-surface px-4 py-2 text-sm"
-        />
+        <div>
+          <label htmlFor="participant-name" className="sr-only">
+            Name
+          </label>
+          <input
+            id="participant-name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            placeholder="Name"
+            className="w-full rounded-md border border-border bg-surface px-4 py-2 text-sm"
+          />
+        </div>
+        <div>
+          <label htmlFor="participant-role" className="sr-only">
+            Role
+          </label>
+          <select
+            id="participant-role"
+            value={role}
+            onChange={(e) => setRole(e.target.value)}
+            className="w-full rounded-md border border-border bg-surface px-4 py-2 text-sm"
+          >
+            <option value="artist">Artist</option>
+            <option value="producer">Producer</option>
+            <option value="featured">Featured</option>
+          </select>
+        </div>
+        <div>
+          <label htmlFor="participant-split" className="sr-only">
+            Split percent
+          </label>
+          <input
+            id="participant-split"
+            type="number"
+            min={0}
+            max={100}
+            value={splitPercent}
+            onChange={(e) => setSplitPercent(Number(e.target.value))}
+            className="w-full rounded-md border border-border bg-surface px-4 py-2 text-sm"
+          />
+        </div>
       </div>
 
       <Button type="button" variant="outline" onClick={handleAdd} className="mb-6">

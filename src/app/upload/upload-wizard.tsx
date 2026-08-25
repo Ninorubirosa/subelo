@@ -21,17 +21,36 @@ export function UploadWizard({
   initialStep: number
 }) {
   const [step, setStep] = useState(initialStep)
+  const [maxStepReached, setMaxStepReached] = useState(initialStep)
   const [currentRelease, setCurrentRelease] = useState(release)
   const [currentTracks, setCurrentTracks] = useState(tracks)
   const [currentParticipants, setCurrentParticipants] = useState(participants)
+
+  function goToStep(next: number) {
+    setStep(next)
+    setMaxStepReached((prev) => Math.max(prev, next))
+  }
 
   return (
     <main className="min-h-screen bg-background text-foreground px-4 py-16">
       <div className="max-w-2xl mx-auto">
         <div className="flex items-center gap-2 mb-10 text-sm text-muted-foreground">
           {STEP_LABELS.map((label, i) => (
-            <span key={label} className={i === step ? 'text-lime font-semibold' : ''}>
-              {label}
+            <span key={label} className="flex items-center">
+              <button
+                type="button"
+                onClick={() => i <= maxStepReached && goToStep(i)}
+                disabled={i > maxStepReached}
+                className={
+                  i === step
+                    ? 'text-lime font-semibold'
+                    : i <= maxStepReached
+                      ? 'hover:text-foreground cursor-pointer'
+                      : 'cursor-not-allowed opacity-50'
+                }
+              >
+                {label}
+              </button>
               {i < STEP_LABELS.length - 1 && <span className="mx-2">/</span>}
             </span>
           ))}
@@ -42,7 +61,7 @@ export function UploadWizard({
             release={currentRelease}
             onSaved={(updated) => {
               setCurrentRelease(updated)
-              setStep(1)
+              goToStep(1)
             }}
           />
         )}
@@ -53,7 +72,7 @@ export function UploadWizard({
             tracks={currentTracks}
             onSaved={(updated) => {
               setCurrentTracks(updated)
-              setStep(2)
+              goToStep(2)
             }}
           />
         )}
@@ -64,7 +83,7 @@ export function UploadWizard({
             participants={currentParticipants}
             onSaved={(updated) => {
               setCurrentParticipants(updated)
-              setStep(3)
+              goToStep(3)
             }}
           />
         )}

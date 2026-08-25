@@ -22,22 +22,32 @@ export function TracksStep({
 
   async function handleAddTrack() {
     if (!newTitle.trim()) return
-    const nextTrackNumber =
-      currentTracks.length === 0
-        ? 1
-        : Math.max(...currentTracks.map((t) => t.trackNumber)) + 1
-    const created = await upsertTrack(releaseId, {
-      title: newTitle.trim(),
-      trackNumber: nextTrackNumber,
-      explicit: false,
-    })
-    setCurrentTracks([...currentTracks, created])
-    setNewTitle('')
+    setError(null)
+    try {
+      const nextTrackNumber =
+        currentTracks.length === 0
+          ? 1
+          : Math.max(...currentTracks.map((t) => t.trackNumber)) + 1
+      const created = await upsertTrack(releaseId, {
+        title: newTitle.trim(),
+        trackNumber: nextTrackNumber,
+        explicit: false,
+      })
+      setCurrentTracks((prev) => [...prev, created])
+      setNewTitle('')
+    } catch {
+      setError('Could not add track. Please try again.')
+    }
   }
 
   async function handleRemoveTrack(track: Track) {
-    await deleteTrack(releaseId, track.id)
-    setCurrentTracks(currentTracks.filter((t) => t.id !== track.id))
+    setError(null)
+    try {
+      await deleteTrack(releaseId, track.id)
+      setCurrentTracks((prev) => prev.filter((t) => t.id !== track.id))
+    } catch {
+      setError('Could not remove track. Please try again.')
+    }
   }
 
   async function handleAudioFile(track: Track, index: number, file: File) {
@@ -53,8 +63,8 @@ export function TracksStep({
         audioFileUrl,
         explicit: track.explicit,
       })
-      setCurrentTracks(
-        currentTracks.map((t) => (t.id === updated.id ? updated : t))
+      setCurrentTracks((prev) =>
+        prev.map((t) => (t.id === updated.id ? updated : t))
       )
     } catch {
       setError('Audio upload failed. Please try a different file.')

@@ -13,9 +13,9 @@ const AUDIO_TYPES = [
 ]
 
 export async function POST(request: Request): Promise<NextResponse> {
-  const body = (await request.json()) as HandleUploadBody
-
   try {
+    const body = (await request.json()) as HandleUploadBody
+
     const jsonResponse = await handleUpload({
       body,
       request,
@@ -28,9 +28,12 @@ export async function POST(request: Request): Promise<NextResponse> {
         const payload = clientPayload ? JSON.parse(clientPayload) : {}
         const allowedContentTypes =
           payload.kind === 'audio' ? AUDIO_TYPES : COVER_ART_TYPES
+        const maximumSizeInBytes =
+          payload.kind === 'audio' ? 500 * 1024 * 1024 : 36 * 1024 * 1024
 
         return {
           allowedContentTypes,
+          maximumSizeInBytes,
           addRandomSuffix: true,
         }
       },

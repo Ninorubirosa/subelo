@@ -75,7 +75,11 @@ export function ReviewStep({
         </ul>
       </div>
 
-      {error && <p className="text-sm text-destructive mb-4">{error}</p>}
+      {error && (
+        <p role="alert" className="text-sm text-destructive mb-4">
+          {error}
+        </p>
+      )}
 
       <Button type="button" onClick={handleSubmit} disabled={submitting}>
         {submitting ? 'Submitting…' : 'Submit release'}
