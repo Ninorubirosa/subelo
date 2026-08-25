@@ -81,6 +81,40 @@ model Release {
   createdAt   DateTime @default(now())
   earnings    Earning[]
   platformStatuses PlatformStatus[]
+  titleLanguage         String?
+  isVersion             Boolean  @default(false)
+  versionType           String?
+  copyrightHolder       String?
+  phonographicHolder    String?
+  previouslyDistributed Boolean  @default(false)
+  sonosuiteStatus       String   @default("not_exported")
+  tracks                Track[]
+  participants          Participant[]
+}
+
+model Track {
+  id              String   @id @default(cuid())
+  releaseId       String
+  release         Release  @relation(fields: [releaseId], references: [id], onDelete: Cascade)
+  title           String
+  trackNumber     Int
+  isrc            String?
+  audioFileUrl    String?
+  durationSeconds Int?
+  explicit        Boolean  @default(false)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
+
+model Participant {
+  id           String   @id @default(cuid())
+  releaseId    String
+  release      Release  @relation(fields: [releaseId], references: [id], onDelete: Cascade)
+  name         String
+  email        String?
+  role         String
+  splitPercent Float
+  createdAt    DateTime @default(now())
 }
 
 model Platform {

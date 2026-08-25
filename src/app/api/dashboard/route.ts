@@ -6,6 +6,7 @@ export async function GET() {
     const artists = await db.artist.findMany({
       include: {
         releases: {
+          where: { status: 'live' },
           include: {
             platformStatuses: { include: { platform: true } },
             earnings: true,
@@ -27,6 +28,7 @@ export async function GET() {
     })
 
     const releases = await db.release.findMany({
+      where: { status: 'live' },
       include: { artist: true, platformStatuses: true, earnings: true },
       orderBy: { releaseDate: 'desc' },
     })
