@@ -12,7 +12,7 @@ export default function LoginPage() {
     e.preventDefault()
     setStatus('sending')
     try {
-      const result = await signIn('resend', { email, redirect: false })
+      const result = await signIn('resend', { email, redirect: false, callbackUrl: '/dashboard' })
       setStatus(result?.error ? 'error' : 'sent')
     } catch (error) {
       console.error('Sign in error:', error)
