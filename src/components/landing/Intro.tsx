@@ -1,12 +1,14 @@
 'use client'
 
 import dynamic from 'next/dynamic'
+import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 
 const STORAGE_KEY = 'subelo-intro-seen'
-const HOLD_UNTIL_MS = 1700
-const FADE_MS = 600
+const HOLD_UNTIL_MS = 2600
+const FADE_MS = 700
+const LOGO_DELAY_S = 1.3
 
 const IntroScene = dynamic(() => import('./IntroScene').then((m) => m.IntroScene), { ssr: false })
 
@@ -45,9 +47,26 @@ export function Intro({ children }: { children: React.ReactNode }) {
           <motion.div
             className="intro-overlay fixed inset-0 z-[100] bg-background"
             exit={{ opacity: 0 }}
-            transition={{ duration: FADE_MS / 1000, ease: 'easeOut' }}
+            transition={{ duration: FADE_MS / 1000, ease: [0.16, 1, 0.3, 1] }}
           >
             <IntroScene reduced={reduced} />
+            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.82 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{
+                  duration: 0.6,
+                  delay: reduced ? 0 : LOGO_DELAY_S,
+                  ease: [0.16, 1, 0.3, 1],
+                }}
+                className="flex items-center gap-2.5"
+              >
+                <Image src="/logo-mark.png" alt="" width={243} height={125} className="h-9 w-auto" priority />
+                <span className="text-2xl font-bold tracking-tight text-foreground">
+                  SUB<span className="text-lime">ELO</span>
+                </span>
+              </motion.div>
+            </div>
             <button
               onClick={finish}
               className="absolute top-6 right-6 text-sm text-muted-foreground hover:text-foreground transition-colors"
