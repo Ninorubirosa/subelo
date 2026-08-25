@@ -1,17 +1,25 @@
-import { redirect } from 'next/navigation'
+import { notFound, redirect } from 'next/navigation'
 import { auth } from '@/auth'
 import { db } from '@/lib/db'
-import { getOrCreateDraftRelease } from '@/lib/get-or-create-draft-release'
 import { loadReleaseForWizard } from '@/lib/load-release-for-wizard'
-import { UploadWizard } from './upload-wizard'
+import { UploadWizard } from '../upload-wizard'
 
-export default async function UploadPage() {
+export default async function EditReleasePage({
+  params,
+}: {
+  params: Promise<{ releaseId: string }>
+}) {
   const session = await auth()
   if (!session?.user?.artistId) {
     redirect('/login')
   }
 
-  const release = await getOrCreateDraftRelease(db, session.user.artistId)
+  const { releaseId } = await params
+  const release = await db.release.findUnique({ where: { id: releaseId } })
+  if (!release || release.artistId !== session.user.artistId) {
+    notFound()
+  }
+
   const { tracks, participants, initialStep } = await loadReleaseForWizard(db, release)
 
   return (
