@@ -1,6 +1,6 @@
 'use client'
 
-import { Zap } from 'lucide-react'
+import Image from 'next/image'
 
 const footerLinks = {
   Product: ['Features', 'Distribution', 'Analytics', 'AI Mastering'],
@@ -17,9 +17,7 @@ export function Footer() {
           {/* Brand */}
           <div className="col-span-2 md:col-span-1">
             <div className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 rounded-lg bg-lime flex items-center justify-center">
-                <Zap className="w-5 h-5 text-black" />
-              </div>
+              <Image src="/logo-mark.png" alt="" width={243} height={125} className="h-7 w-auto" />
               <span className="text-xl font-bold tracking-tight">
                 SUB<span className="text-lime">ELO</span>
               </span>
