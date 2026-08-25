@@ -5,7 +5,7 @@ import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 
-const STORAGE_KEY = 'subelo-intro-seen'
+const STORAGE_KEY = 'subelo-intro-seen-v2'
 const HOLD_UNTIL_MS = 2600
 const FADE_MS = 700
 const LOGO_DELAY_S = 1.3
