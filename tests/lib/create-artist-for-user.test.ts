@@ -6,9 +6,11 @@ import { createArtistForUser } from '@/lib/create-artist-for-user'
 const testDbPath = path.join(process.cwd(), 'prisma', 'test.db')
 const prisma = new PrismaClient({ datasourceUrl: `file:${testDbPath}` })
 
+const testEmails = ['nova@example.com', 'echo@example.com']
+
 beforeAll(async () => {
-  await prisma.artist.deleteMany()
-  await prisma.user.deleteMany()
+  await prisma.artist.deleteMany({ where: { user: { email: { in: testEmails } } } })
+  await prisma.user.deleteMany({ where: { email: { in: testEmails } } })
 })
 
 afterAll(async () => {
