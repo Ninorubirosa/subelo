@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { motion } from 'framer-motion'
 import { Play, ArrowRight, Upload } from 'lucide-react'
+import { useFadeInUp } from '@/lib/motion'
 
 const WaveformScene = dynamic(() => import('./WaveformScene').then((m) => m.WaveformScene), {
   ssr: false,
@@ -12,10 +13,12 @@ const WaveformScene = dynamic(() => import('./WaveformScene').then((m) => m.Wave
 })
 
 function FloatingStat({ value, label, delay }: { value: string; label: string; delay: number }) {
+  const fade = useFadeInUp(20)
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
+      initial="hidden"
+      animate="shown"
+      variants={fade}
       transition={{ delay, duration: 0.6 }}
       className="glass-card rounded-2xl p-4 sm:p-6 text-center"
     >
@@ -26,6 +29,7 @@ function FloatingStat({ value, label, delay }: { value: string; label: string; d
 }
 
 export function Hero() {
+  const fade = useFadeInUp(20)
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center pt-16 overflow-hidden">
       {/* Full-bleed generative waveform scene */}
@@ -39,8 +43,9 @@ export function Hero() {
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center">
         {/* Badge */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+          initial="hidden"
+          animate="shown"
+          variants={fade}
           transition={{ duration: 0.5 }}
         >
           <Badge variant="outline" className="border-lime/30 text-lime mb-6 px-4 py-1.5 text-sm">
@@ -51,8 +56,9 @@ export function Hero() {
 
         {/* Headline */}
         <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+          initial="hidden"
+          animate="shown"
+          variants={fade}
           transition={{ duration: 0.6, delay: 0.1 }}
           className="text-4xl sm:text-6xl lg:text-8xl font-black tracking-tight leading-[0.95]"
         >
@@ -63,8 +69,9 @@ export function Hero() {
 
         {/* Subheadline */}
         <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+          initial="hidden"
+          animate="shown"
+          variants={fade}
           transition={{ duration: 0.6, delay: 0.2 }}
           className="mt-6 text-lg sm:text-xl text-muted-foreground max-w-2xl leading-relaxed"
         >
@@ -74,8 +81,9 @@ export function Hero() {
 
         {/* CTA Buttons */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+          initial="hidden"
+          animate="shown"
+          variants={fade}
           transition={{ duration: 0.6, delay: 0.3 }}
           className="mt-8 flex flex-col sm:flex-row gap-3 w-full sm:w-auto"
         >

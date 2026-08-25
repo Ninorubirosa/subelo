@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { Upload, Globe, Wallet } from 'lucide-react'
+import { useFadeInUp } from '@/lib/motion'
 
 const steps = [
   {
@@ -28,16 +29,18 @@ const steps = [
 ]
 
 export function HowItWorks() {
+  const fadeHeader = useFadeInUp(20)
+  const fadeStep = useFadeInUp(30)
   return (
     <section className="relative py-24 sm:py-32">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial="hidden"
+          whileInView="shown"
+          variants={fadeHeader}
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <p className="text-lime text-sm font-semibold tracking-widest uppercase mb-3">How It Works</p>
           <h2 className="text-3xl sm:text-5xl font-black tracking-tight">
             Three Steps. That&apos;s It.
           </h2>
@@ -49,8 +52,9 @@ export function HowItWorks() {
             return (
               <motion.div
                 key={step.number}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial="hidden"
+                whileInView="shown"
+                variants={fadeStep}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.15 }}
                 className="relative group"

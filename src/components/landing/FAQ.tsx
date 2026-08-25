@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ChevronDown } from 'lucide-react'
+import { useFadeInUp } from '@/lib/motion'
 
 const faqs = [
   {
@@ -33,19 +34,19 @@ const faqs = [
 
 export function FAQ() {
   const [open, setOpen] = useState<number | null>(null)
+  const fadeHeader = useFadeInUp(20)
+  const fadeItem = useFadeInUp(10)
 
   return (
     <section className="relative py-24 sm:py-32">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial="hidden"
+          whileInView="shown"
+          variants={fadeHeader}
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <p className="text-lime text-sm font-semibold tracking-widest uppercase mb-3">
-            FAQ
-          </p>
           <h2 className="text-3xl sm:text-5xl font-black tracking-tight">
             Got Questions?
           </h2>
@@ -55,13 +56,16 @@ export function FAQ() {
           {faqs.map((faq, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial="hidden"
+              whileInView="shown"
+              variants={fadeItem}
               viewport={{ once: true }}
               transition={{ delay: i * 0.05 }}
             >
               <button
                 onClick={() => setOpen(open === i ? null : i)}
+                aria-expanded={open === i}
+                aria-controls={`faq-answer-${i}`}
                 className="w-full glass-card rounded-xl p-5 text-left hover:border-lime/30 transition-colors"
               >
                 <div className="flex items-center justify-between gap-4">
@@ -77,6 +81,7 @@ export function FAQ() {
                 <AnimatePresence>
                   {open === i && (
                     <motion.div
+                      id={`faq-answer-${i}`}
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: 'auto', opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}

@@ -54,13 +54,19 @@ export function Footer() {
             &copy; {new Date().getFullYear()} Subelo Music. All rights reserved.
           </p>
           <div className="flex items-center gap-4">
-            {['X', 'IG', 'YT', 'TT'].map((social) => (
+            {[
+              { label: 'X', name: 'X (Twitter)' },
+              { label: 'IG', name: 'Instagram' },
+              { label: 'YT', name: 'YouTube' },
+              { label: 'TT', name: 'TikTok' },
+            ].map((social) => (
               <a
-                key={social}
+                key={social.label}
                 href="#"
+                aria-label={social.name}
                 className="w-8 h-8 rounded-full bg-muted flex items-center justify-center text-xs text-muted-foreground hover:bg-lime hover:text-black transition-colors"
               >
-                {social}
+                {social.label}
               </a>
             ))}
           </div>

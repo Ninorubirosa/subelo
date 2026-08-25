@@ -1,10 +1,11 @@
 'use client'
 
 import React, { useEffect, useState } from 'react'
-import { motion } from 'framer-motion'
+import { motion, useReducedMotion } from 'framer-motion'
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, AreaChart, Area } from 'recharts'
 import { TrendingUp, DollarSign, Music, Users, ArrowUpRight } from 'lucide-react'
 import { Card, CardContent } from '@/components/ui/card'
+import { useFadeInUp } from '@/lib/motion'
 
 interface DashboardData {
   totalEarnings: number
@@ -87,6 +88,8 @@ const mockReleases = [
 
 export function DashboardPreview() {
   const [data, setData] = useState<DashboardData | null>(null)
+  const fade = useFadeInUp(20)
+  const reducedMotion = useReducedMotion()
 
   useEffect(() => {
     fetch('/api/dashboard')
@@ -116,12 +119,12 @@ export function DashboardPreview() {
     <section id="dashboard" className="relative py-24 sm:py-32">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial="hidden"
+          whileInView="shown"
+          variants={fade}
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <p className="text-lime text-sm font-semibold tracking-widest uppercase mb-3">Live Dashboard</p>
           <h2 className="text-3xl sm:text-5xl font-black tracking-tight">
             Your Music. In Real Time.
           </h2>
@@ -140,8 +143,9 @@ export function DashboardPreview() {
           ].map((stat, i) => (
             <motion.div
               key={stat.label}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial="hidden"
+              whileInView="shown"
+              variants={fade}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
             >
@@ -165,8 +169,9 @@ export function DashboardPreview() {
         <div className="grid lg:grid-cols-5 gap-4 mb-8">
           {/* Earnings Chart */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial="hidden"
+            whileInView="shown"
+            variants={fade}
             viewport={{ once: true }}
             className="lg:col-span-3"
           >
@@ -188,7 +193,15 @@ export function DashboardPreview() {
                         </linearGradient>
                       </defs>
                       <XAxis dataKey="period" axisLine={false} tickLine={false} tick={{ fill: '#71717a', fontSize: 12 }} />
-                      <YAxis axisLine={false} tickLine={false} tick={{ fill: '#71717a', fontSize: 12 }} tickFormatter={(v) => `$${(v / 1000).toFixed(0)}k`} />
+                      <YAxis
+                        axisLine={false}
+                        tickLine={false}
+                        tick={{ fill: '#71717a', fontSize: 12 }}
+                        tickFormatter={(v) => {
+                          const thousands = v / 1000
+                          return `$${Number.isInteger(thousands) ? thousands : thousands.toFixed(1)}k`
+                        }}
+                      />
                       <Tooltip content={<CustomTooltip />} />
                       <Area type="monotone" dataKey="amount" stroke="#38B6FF" strokeWidth={2} fill="url(#earnGrad)" name="amount" />
                     </AreaChart>
@@ -200,8 +213,9 @@ export function DashboardPreview() {
 
           {/* Platform Breakdown */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial="hidden"
+            whileInView="shown"
+            variants={fade}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
             className="lg:col-span-2"
@@ -222,10 +236,10 @@ export function DashboardPreview() {
                         </div>
                         <div className="h-2 bg-muted rounded-full overflow-hidden">
                           <motion.div
-                            initial={{ width: 0 }}
+                            initial={{ width: reducedMotion ? `${pct}%` : 0 }}
                             whileInView={{ width: `${pct}%` }}
                             viewport={{ once: true }}
-                            transition={{ duration: 0.8, ease: 'easeOut' }}
+                            transition={{ duration: reducedMotion ? 0 : 0.8, ease: 'easeOut' }}
                             className="h-full rounded-full"
                             style={{ backgroundColor: p.color }}
                           />
@@ -241,8 +255,9 @@ export function DashboardPreview() {
 
         {/* Top Releases Table */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial="hidden"
+          whileInView="shown"
+          variants={fade}
           viewport={{ once: true }}
         >
           <Card className="bg-surface border-border overflow-hidden">
@@ -275,9 +290,9 @@ export function DashboardPreview() {
                         <td className="py-3 px-3 text-sm text-muted-foreground hidden sm:table-cell">
                           <span className="bg-surface-light px-2 py-0.5 rounded text-xs">{r.type}</span>
                         </td>
-                        <td className="py-3 px-3 text-sm text-right font-mono">{formatNumber(r.totalStreams || r.streams)}</td>
+                        <td className="py-3 px-3 text-sm text-right font-mono">{formatNumber(r.totalStreams ?? r.streams)}</td>
                         <td className="py-3 px-3 text-sm text-right font-mono text-lime">
-                          {formatCurrency(r.totalEarnings || r.earnings)}
+                          {formatCurrency(r.totalEarnings ?? r.earnings)}
                         </td>
                       </tr>
                     ))}

@@ -49,7 +49,9 @@ export async function GET() {
 
     // Aggregate by platform
     const platformStats = platforms.map((p) => {
-      const totalStreams = p.statuses.reduce((sum, s) => sum + s.streams, 0)
+      const totalStreams = p.statuses
+        .filter((s) => s.status === 'live')
+        .reduce((sum, s) => sum + s.streams, 0)
       return {
         id: p.id,
         name: p.name,
@@ -62,7 +64,9 @@ export async function GET() {
 
     // Top releases
     const topReleases = releases.slice(0, 6).map((r) => {
-      const totalStreams = r.platformStatuses.reduce((sum, s) => sum + s.streams, 0)
+      const totalStreams = r.platformStatuses
+        .filter((s) => s.status === 'live')
+        .reduce((sum, s) => sum + s.streams, 0)
       const totalEarnings = r.earnings.reduce((sum, e) => sum + e.amount, 0)
       return {
         id: r.id,

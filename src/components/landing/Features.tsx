@@ -9,6 +9,8 @@ import {
   Globe2,
   Sparkles,
 } from 'lucide-react'
+import { cn } from '@/lib/utils'
+import { useFadeInUp } from '@/lib/motion'
 
 const features = [
   {
@@ -50,18 +52,17 @@ const features = [
 ]
 
 export function Features() {
+  const fade = useFadeInUp(20)
   return (
     <section id="features" className="relative py-24 sm:py-32">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial="hidden"
+          whileInView="shown"
+          variants={fade}
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <p className="text-lime text-sm font-semibold tracking-widest uppercase mb-3">
-            Features
-          </p>
           <h2 className="text-3xl sm:text-5xl font-black tracking-tight">
             Built Different.
           </h2>
@@ -73,20 +74,34 @@ export function Features() {
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {features.map((f, i) => {
             const Icon = f.icon
+            const featured = i === 0
             return (
               <motion.div
                 key={f.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial="hidden"
+                whileInView="shown"
+                variants={fade}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.08 }}
-                className="glass-card rounded-2xl p-6 hover:border-lime/30 transition-all duration-300 group"
+                className={cn(
+                  'glass-card rounded-2xl p-6 hover:border-lime/30 transition-colors duration-300 group',
+                  featured && 'sm:col-span-2 lg:col-span-2 p-8 flex flex-col justify-center'
+                )}
               >
-                <div className="w-12 h-12 rounded-xl bg-lime/10 flex items-center justify-center mb-4 group-hover:bg-lime/20 transition-colors">
-                  <Icon className="w-6 h-6 text-lime" />
+                <div
+                  className={cn(
+                    'w-12 h-12 rounded-xl bg-lime/10 flex items-center justify-center mb-4 group-hover:bg-lime/20 transition-colors',
+                    featured && 'w-16 h-16 rounded-2xl mb-6'
+                  )}
+                >
+                  <Icon className={cn('w-6 h-6 text-lime', featured && 'w-8 h-8')} />
                 </div>
-                <h3 className="text-lg font-bold mb-2">{f.title}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">{f.description}</p>
+                <h3 className={cn('text-lg font-bold mb-2', featured && 'text-2xl sm:text-3xl mb-3')}>
+                  {f.title}
+                </h3>
+                <p className={cn('text-sm text-muted-foreground leading-relaxed', featured && 'text-base max-w-md')}>
+                  {f.description}
+                </p>
               </motion.div>
             )
           })}
