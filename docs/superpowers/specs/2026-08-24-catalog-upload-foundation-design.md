@@ -172,6 +172,16 @@ Two invariants worth protecting, matching the pattern from subsystem #1
 
 ## Out of scope for this doc
 
+- **The Details step UI collects only `title` and cover art.** The
+  other six `Release` fields added above (`titleLanguage`, `isVersion`,
+  `versionType`, `copyrightHolder`, `phonographicHolder`,
+  `previouslyDistributed`) exist on the model now so the schema doesn't
+  need a rework later, but no form field collects them in 2a — they
+  stay at their defaults. They're meaningless without subsystem 2b (the
+  SonoSuite CSV export is the only current consumer of them), and 2b is
+  itself blocked on SonoSuite Bulk Upload access. 2b owns adding both
+  the missing form fields and the CSV-generation logic together, once
+  unblocked.
 - Subsystem 2b: SonoSuite Bulk Upload CSV generation and ingestion —
   blocked on SonoSuite plan/feature access, picked up once confirmed
   enabled. The data model above (public Blob URLs, release-level
