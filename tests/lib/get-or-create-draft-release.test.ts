@@ -1,10 +1,8 @@
 import { PrismaClient } from '@prisma/client'
-import path from 'node:path'
 import { afterAll, beforeAll, describe, expect, it } from 'vitest'
 import { getOrCreateDraftRelease } from '@/lib/get-or-create-draft-release'
 
-const testDbPath = path.join(process.cwd(), 'prisma', 'test.db')
-const prisma = new PrismaClient({ datasourceUrl: `file:${testDbPath}` })
+const prisma = new PrismaClient()
 
 let artistId: string
 

@@ -1,10 +1,8 @@
 import { PrismaClient } from '@prisma/client'
-import path from 'node:path'
 import { afterAll, beforeAll, describe, expect, it } from 'vitest'
 import { createArtistForUser } from '@/lib/create-artist-for-user'
 
-const testDbPath = path.join(process.cwd(), 'prisma', 'test.db')
-const prisma = new PrismaClient({ datasourceUrl: `file:${testDbPath}` })
+const prisma = new PrismaClient()
 
 const testEmails = ['nova@example.com', 'echo@example.com']
 
@@ -14,6 +12,8 @@ beforeAll(async () => {
 })
 
 afterAll(async () => {
+  await prisma.artist.deleteMany({ where: { user: { email: { in: testEmails } } } })
+  await prisma.user.deleteMany({ where: { email: { in: testEmails } } })
   await prisma.$disconnect()
 })
 

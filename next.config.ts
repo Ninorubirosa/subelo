@@ -7,9 +7,6 @@ const nextConfig: NextConfig = {
     ignoreBuildErrors: true,
   },
   reactStrictMode: false,
-  outputFileTracingIncludes: {
-    "/api/dashboard": ["./db/**"],
-  },
 };
 
 export default nextConfig;
