@@ -76,7 +76,7 @@ export function Hero() {
           className="mt-6 text-lg sm:text-xl text-muted-foreground max-w-2xl leading-relaxed"
         >
           Distribute to every major platform. Keep 100% of your royalties.
-          Get paid in days, not months. No tricks, no hidden fees, no BS.
+          Get paid in days, not months. No tricks, no hidden fees.
         </motion.p>
 
         {/* CTA Buttons */}
