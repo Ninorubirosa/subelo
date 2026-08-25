@@ -4,6 +4,7 @@ import { auth } from '@/auth'
 import { db } from '@/lib/db'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
+import { deleteRelease } from '@/app/upload/actions'
 
 export default async function DashboardPage() {
   const session = await auth()
@@ -39,22 +40,35 @@ export default async function DashboardPage() {
         ) : (
           <ul className="space-y-3">
             {releases.map((release) => (
-              <li key={release.id}>
+              <li
+                key={release.id}
+                className="glass-card rounded-xl p-4 flex items-center justify-between"
+              >
                 <Link
                   href={`/upload/${release.id}`}
-                  className="glass-card rounded-xl p-4 flex items-center justify-between hover:border-lime/30 transition-colors block"
+                  className="flex-1 hover:opacity-80 transition-opacity"
                 >
-                  <div>
-                    <h2 className="font-semibold">
-                      {release.title || 'Untitled release'}
-                    </h2>
-                    <p className="text-sm text-muted-foreground">
-                      {release.tracks.length} track
-                      {release.tracks.length === 1 ? '' : 's'}
-                    </p>
-                  </div>
-                  <Badge variant="outline">{release.status}</Badge>
+                  <h2 className="font-semibold">
+                    {release.title || 'Untitled release'}
+                  </h2>
+                  <p className="text-sm text-muted-foreground">
+                    {release.tracks.length} track
+                    {release.tracks.length === 1 ? '' : 's'}
+                  </p>
                 </Link>
+                <div className="flex items-center gap-3">
+                  <Badge variant="outline">{release.status}</Badge>
+                  {release.status === 'draft' && (
+                    <form action={deleteRelease.bind(null, release.id)}>
+                      <button
+                        type="submit"
+                        className="text-sm text-destructive hover:underline"
+                      >
+                        Delete
+                      </button>
+                    </form>
+                  )}
+                </div>
               </li>
             ))}
           </ul>

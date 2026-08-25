@@ -1,5 +1,6 @@
 'use server'
 
+import { revalidatePath } from 'next/cache'
 import { auth } from '@/auth'
 import { db } from '@/lib/db'
 import { validateSplitPercentages } from '@/lib/validate-split-percentages'
@@ -164,6 +165,18 @@ export async function deleteParticipant(
   if (count === 0) {
     throw new Error('Participant not found')
   }
+}
+
+export async function deleteRelease(releaseId: string) {
+  const artistId = await requireArtistId()
+  const release = await requireOwnedRelease(releaseId, artistId)
+
+  if (release.status !== 'draft') {
+    throw new Error('Only draft releases can be deleted')
+  }
+
+  await db.release.delete({ where: { id: releaseId } })
+  revalidatePath('/dashboard')
 }
 
 export async function submitRelease(releaseId: string) {
