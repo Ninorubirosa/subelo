@@ -1,5 +1,4 @@
-'use client'
-
+import { auth } from '@/auth'
 import { Intro } from '@/components/landing/Intro'
 import { Navbar } from '@/components/landing/Navbar'
 import { Hero } from '@/components/landing/Hero'
@@ -12,11 +11,12 @@ import { FAQ } from '@/components/landing/FAQ'
 import { CTASection } from '@/components/landing/CTASection'
 import { Footer } from '@/components/landing/Footer'
 
-export default function Home() {
+export default async function Home() {
+  const session = await auth()
   return (
     <Intro>
       <div className="min-h-screen flex flex-col">
-        <Navbar />
+        <Navbar session={session} />
         <main className="flex-1 noise-overlay relative">
           <Hero />
           <PlatformLogos />

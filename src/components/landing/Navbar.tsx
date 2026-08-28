@@ -2,6 +2,9 @@
 
 import { useState } from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
+import type { Session } from 'next-auth'
+import { signOut } from 'next-auth/react'
 import { Button } from '@/components/ui/button'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
@@ -12,9 +15,10 @@ const navLinks = [
   { label: 'Dashboard', href: '#dashboard' },
 ]
 
-export function Navbar() {
+export function Navbar({ session }: { session: Session | null }) {
   const [mobileOpen, setMobileOpen] = useState(false)
   const fade = useFadeInUp(-20)
+  const isAuthed = !!session?.user
 
   return (
     <motion.nav
@@ -49,12 +53,29 @@ export function Navbar() {
 
           {/* Desktop CTA */}
           <div className="hidden md:flex items-center gap-3">
-            <Button variant="ghost" className="text-muted-foreground hover:text-foreground">
-              Log in
-            </Button>
-            <Button className="bg-lime text-black hover:bg-lime-dark font-semibold glow-button">
-              Start Free
-            </Button>
+            {isAuthed ? (
+              <>
+                <Button
+                  variant="ghost"
+                  className="text-muted-foreground hover:text-foreground"
+                  onClick={() => signOut({ callbackUrl: '/' })}
+                >
+                  Sign out
+                </Button>
+                <Button asChild className="bg-lime text-black hover:bg-lime-dark font-semibold glow-button">
+                  <Link href="/dashboard">Dashboard</Link>
+                </Button>
+              </>
+            ) : (
+              <>
+                <Button asChild variant="ghost" className="text-muted-foreground hover:text-foreground">
+                  <Link href="/login">Log in</Link>
+                </Button>
+                <Button asChild className="bg-lime text-black hover:bg-lime-dark font-semibold glow-button">
+                  <Link href="/login">Start Free</Link>
+                </Button>
+              </>
+            )}
           </div>
 
           {/* Mobile hamburger */}
@@ -89,12 +110,35 @@ export function Navbar() {
                 </a>
               ))}
               <div className="flex flex-col gap-2 pt-3 border-t border-border">
-                <Button variant="ghost" className="w-full justify-center text-muted-foreground">
-                  Log in
-                </Button>
-                <Button className="w-full bg-lime text-black hover:bg-lime-dark font-semibold">
-                  Start Free
-                </Button>
+                {isAuthed ? (
+                  <>
+                    <Button
+                      variant="ghost"
+                      className="w-full justify-center text-muted-foreground"
+                      onClick={() => signOut({ callbackUrl: '/' })}
+                    >
+                      Sign out
+                    </Button>
+                    <Button asChild className="w-full bg-lime text-black hover:bg-lime-dark font-semibold">
+                      <Link href="/dashboard" onClick={() => setMobileOpen(false)}>
+                        Dashboard
+                      </Link>
+                    </Button>
+                  </>
+                ) : (
+                  <>
+                    <Button asChild variant="ghost" className="w-full justify-center text-muted-foreground">
+                      <Link href="/login" onClick={() => setMobileOpen(false)}>
+                        Log in
+                      </Link>
+                    </Button>
+                    <Button asChild className="w-full bg-lime text-black hover:bg-lime-dark font-semibold">
+                      <Link href="/login" onClick={() => setMobileOpen(false)}>
+                        Start Free
+                      </Link>
+                    </Button>
+                  </>
+                )}
               </div>
             </div>
           </motion.div>
